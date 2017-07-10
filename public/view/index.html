@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="vendors/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="styles/style.css">
+    <script src="vendors/jquery-3.2.1.min.js"> charset="utf-8"</script>
+    <script src="vendors/angular.min.js"> charset="utf-8"</script>
+    <script src="vendors/angular-route.min.js" charset="utf-8"></script>
+    <script src="scripts/script.js" charset="utf-8"></script>
+    <script src="scripts/services/votes.js" charset="utf-8"></script>
+    <script src="vendors/materialize.min.js" charset="utf-8"></script>
+    <script src="vendors/angular-materialize.min.js" charset="utf-8"></script>
+    <title></title>
+  </head>
+
+  <body ng-app="myApp">
+   <main ng-controller="mainController as mc" ng-init="mc.getVoteItems()">
+    <div class="cont center- align row continer">
+        <div class="banner col s12">
+          <div class="topNavCont center-align row">
+            <a class="Nav right col s12 l2" onclick="document.getElementById('id01').style.display='block'">Login</a>
+            <a class="Nav right col s12 l2" href="#">Schedule</a>
+            <a class="Nav right col s12 l2" href="#">Home</a>
+          </div>
+          <div class="center-align">
+            <h1 class="header">Nerdery Snack Food System</h1>
+            <p class="intro flow-text col s10 offset-s1 l6 offset-l3">Lorem ipsum dolor sit amet, consectetur adipisicing
+              elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis
+              nostrud exercitation ullamco laboris nisi ut aliquip
+              ex ea commodo consequat.</p>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row center-align">
+          <div class="col l6 offset-l3 m12 s12">
+            <h3>Snack Voting</h3>
+            <p>Vote on the snacks you want to see in this month’s rotation</p>
+            <div class="divider"></div>
+            <p>{{mc.votesRemaining}} Votes Remaining</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+            <div class="col l5 offset-l1 m12 s12">
+              <table>
+                <tr class="blue">
+                  <th>
+                    <span class="tblHd left">Available Items</span>
+                    <span class="voteTally right">{{mc.voteItems.length}}</span>
+                  </th>
+                <tr>
+                <tr class="voteItms" ng-repeat="item in mc.voteItems">
+                  <td ng-click="mc.select($index)">
+                    <span>{{item.name}}</span>
+                    <img ng-if="item.selected" class="right checkmark" src="assets/checkmark-flat.png" alt="">
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="col l5 offset-l1 m12 s12">
+              <table>
+                <tr class="blue">
+                  <th>
+                    <span class="tblHd left">Selected Items</span>
+                    <span class="voteTally right">{{mc.selectedItems.length}}</span>
+                  </th>
+                <tr>
+                <tr class="voteItms" ng-repeat="item in mc.selectedItems">
+                  <td ng-click="mc.unSelect($index)">
+                    <span class="left">{{item.name}}</span>
+                  </td>
+                </tr>
+              </table>
+            </div>
+        </div>
+        <div class="center-align row">
+          <button type="button" ng-click="mc.finalizeVotes()" class="btn blue" name="button">Finalize</button>
+        </div>
+      </div>
+
+  <div class="divider"></div>
+  <h2 class="head center-align">Sign up for Snafoo updates!</h2>
+
+  <div class="row form">
+   <form class="col l8 offset-l1 s12">
+     <div class="row">
+       <div class="input-field col l6 s12">
+         <input id="first_name" type="text" class="validate">
+         <label for="first_name">First Name</label>
+       </div>
+       <div class="input-field col l6 s12">
+         <input id="last_name" type="text" class="validate">
+         <label for="last_name">Last Name</label>
+       </div>
+     </div>
+     <div class="row">
+       <div class="input-field col l6 s12">
+         <input id="phone" type="number" class="validate">
+         <label for="phone">Phone Number</label>
+       </div>
+       <div class="input-field col l6 s12">
+         <input id="email" type="email" class="validate">
+         <label for="email">Email</label>
+       </div>
+     </div>
+     <div class="row">
+      <div class="input-field col s12">
+        <textarea id="textarea1" class="materialize-textarea"></textarea>
+        <label for="textarea1">Message</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col l4 s12">
+        <input type="checkbox" id="employeeCheck"/>
+        <label for="employeeCheck">I am a Nerdery employee</label>
+      </div>
+      <div class="col l4 s12">
+        <input type="checkbox" id="specOffers"/>
+        <label for="specOffers">Notify Me for Special Offers!</label>
+      </div>
+    </div>
+    <div class="row">
+      <button class="btn blue" type="submit" action="" name="button">Sign Up</button>
+    </div>
+   </form>
+   <div class="col l3">
+     <p class="text"><i class="tiny material-icons">email</i> info@nerdery.com</p>
+     <p class="text"><i class="tiny material-icons">phone</i> (877) 664.6373</p>
+     <p class="text"><i class="tiny material-icons">location_on</i>
+       The Nerdery Snafoo Team <br> 9555 James Ave. S. <br> Bloomington MN, 55431</p>
+   </div>
+ </div>
+
+    <footer class="page-footer blue lighten-3">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">Footer Content</h5>
+              </div>
+              <div class="right-align col l6 s12">
+                <span><a class="Nav grey-text text-lighten-3" href="#!">Home</a></span>
+                <span><a class="Nav grey-text text-lighten-3" href="#!">Schedule</a></span>
+                <span><a class="Nav grey-text text-lighten-3" href="#!">Sign in</a></span>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2017 The Nerdery |
+            <span>9555 James Ave S #245, Bloomington, MN 55431</span>
+            </div>
+          </div>
+      </footer>
+
+      <div id="id01" class="modal">
+        <span onclick="document.getElementById('id01').style.display='none'"
+        class="close" title="Close Modal">&times;</span>
+
+        <!-- Modal Content -->
+        <form class="modal-content animate" action="#!">
+
+          <div class="container row">
+            <div class="input-field col l6 s12">
+              <input id="username" ng-model="mc.username" type="text" class="validate">
+              <label for="username">Username</label>
+            </div>
+
+            <div class="input-field col l6 s12">
+              <input id="pass" ng-model="mc.password" type="password" class="validate">
+              <label for="pass">Password</label>
+            </div>
+
+            <div class="col s3 offset-s3">
+              <button class="btn blue" ng-click="mc.login()" onclick="document.getElementById('id01').style.display='none'" type="button">Login</button>
+            </div>
+            <div class="col s3 offset-s3">
+              <button type="button" class="btn blue" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </main>
+  </body>
+</html>

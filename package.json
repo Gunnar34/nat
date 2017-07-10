@@ -1,0 +1,16 @@
+{
+  "name": "nat",
+  "version": "1.0.0",
+  "description": "nerdery assesment test",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Noah W Rolf",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3"
+  }
+}
